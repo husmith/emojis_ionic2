@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-navbar>
+    <button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Emoji Gallery</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <div class="gallery" *ngFor="let imgSet of images">
+    <ion-row>
+      <ion-col width-50>
+        <button ion-item (click)="itemTapped($event, imgSet[0])">
+        <img src="{{imgSet[0].src}}" width="100%"/>
+        </button>
+        <p>{{ imgSet[0].title }}</p>
+      </ion-col>
+      <ion-col width-50>
+        <button ion-item (click)="itemTapped($event, imgSet[1])">
+        <img src="{{imgSet[1].src}}" width="100%"/>
+      </button>
+        <p>{{ imgSet[1].title }}</p>
+      </ion-col>
+    </ion-row>
+</div>
+  </ion-grid>
+
+
+
+  <!-- <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
+  <ion-
+  {{item.title}}
+  <div class="item-note" item-right>
+  {{item.note}}
+</div>
+</button> -->
+      <!-- <ion-icon name="{{item.src}}" item-left></ion-icon> -->
+
+  <!-- </ion-list>
+  <div *ngIf="selectedItem" padding>
+    You navigated here from <b>{{selectedItem.title}}</b>
+  </div> -->
+</ion-content>

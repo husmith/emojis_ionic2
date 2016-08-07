@@ -1,0 +1,103 @@
+<ion-slides #mainSlider (ionDidChange)="onSlideChanged()" [options]="slideOptions">
+
+  <!-------- Slide 1 ---------->
+  <ion-slide>
+    <ion-header>
+      <ion-navbar>
+        <button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>PDX//moji</ion-title>
+      </ion-navbar>
+    </ion-header>
+    <h2>KEEPING EMOJIS weird</h2>
+    <p>
+      Just a few lines detailing the purpose
+      of the app, the experience, and the
+      ability for community involvement with
+      the keyboard and what not.
+
+      Just a few lines detailing the purpose
+      of the app, the experience, and the
+      ability for community involvement with
+      the keyboard and what not.
+    </p>
+    <div class="slide-footer" styles="align: center;">
+      <button fab-bottom (click)="clickNextSlide()"><ion-icon name="arrow-down"></ion-icon></button>
+    </div>
+
+  </ion-slide>
+
+  <!-------- Slide 2 ---------->
+  <ion-slide>
+    <ion-grid>
+      <div class="gallery" *ngFor="let imgSet of images">
+        <ion-row>
+          <ion-col width-50>
+            <button clear full (click)="imageTapped($event, imgSet[0])">
+            <img src="{{imgSet[0].src}}" width="100%"/>
+            <p>{{ imgSet[0].title }}</p>
+          </button>
+          </ion-col>
+          <ion-col width-50>
+            <button clear (click)="imageTapped($event, imgSet[1])">
+            <img src="{{imgSet[1].src}}" width="100%"/>
+            <p>{{ imgSet[1].title }}</p>
+          </button>
+          </ion-col>
+        </ion-row>
+      </div>
+    </ion-grid>
+
+  </ion-slide>
+
+  <!-------- Slide 3 ---------->
+  <!-- <ion-slide>
+    <h2>Make it your own</h2>
+    <p>Portland is nothing without the people that make it up.  We want your ideas and input as PDXmoji’s continue to grow. Simply upload a photo - anything from a sketch on a napkin to a perfect render of your emoji - and you may just see it in  the next batch we release.</p>
+<div>
+      <button (click)="openSubmit()">Submit Yours</button>
+    </div>
+  </ion-slide> -->
+
+  <ion-slide>
+    <h2>Make it your own</h2>
+    <p>Hi</p>
+    <div class="page-footer">
+          <button (click)="openSubmit()">Submit Yours</button>
+        </div>
+      </ion-slide>
+
+      <!-------- Slide 4 ---------->
+<ion-slide>
+<h2>About Us</h2>
+<p>Just a few lines detailing the purpose
+    of the app, the experience, and the
+     ability for community involvement with
+    the keyboard and what not.</p>
+    <p>
+      Just a few lines detailing the purpose
+    of the app, the experience, and the
+     ability for community involvement with
+    the keyboard and what not.
+    </p>
+</ion-slide>
+
+<!-------- Slide 5 ---------->
+<ion-slide>
+  <h2 class="download-text">SOME SORT OF APPEALING LINE TO ENTISE USER DOWNLOADING</h2>
+  <p>
+<ion-icon name="facebook"></ion-icon>
+<ion-icon name="twitter"></ion-icon>
+<ion-icon name="instagram"></ion-icon>
+<ion-icon name="snapchat"></ion-icon>
+  </p>
+  <ion-content></ion-content>
+  <ion-footer>
+  <ion-toolbar>
+    <ion-title>Made with < 3 in PDX. in PDX.  An R/GA Product</ion-title>
+  </ion-toolbar>
+      </ion-footer>
+      </ion-slide>
+
+</ion-slides>
