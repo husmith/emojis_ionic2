@@ -1,34 +1,48 @@
 import {Component, ViewChild } from '@angular/core';
-import {NavController, NavParams, Slides} from 'ionic-angular';
+import {ModalController, NavController, NavParams, Slides} from 'ionic-angular';
 import {EmojiDetailsPage} from '../emojis/emojis';
+import { SubmitPage } from '../submit-page/submit-page';
+import {emojiData} from '../../populate';
+import {Emoji} from '../../models/emoji';
 
 @Component({
-  templateUrl: 'build/pages/hello-ionic/hello-ionic.html'
+  templateUrl: 'build/pages/hello-ionic/hello-ionic.html',
 })
 export class HelloIonicPage {
   selectedItem: any;
-  images: Array<[{title: number, src: string}]>;
-
+  images: Array<[{title: string, src: string}]>;
+  emojis: Array<Emoji>;
   @ViewChild('mainSlider') slider: Slides;
 
   slideOptions = {
     initialSlide: 0,
     direction: 'vertical'
   };
-  constructor(public navCtrl: NavController, navParams: NavParams) {
+
+  constructor(public navCtrl: NavController, navParams: NavParams, public modalCtrl: ModalController) {
     // If we navigated to this page, we will have an item available as a nav param
+    this.emojis = [];
+    let index = 0;
+    for (let img of emojiData) {
+      let e = new Emoji(img.title, img.src, img.category, img.detail_desc, img.short_desc);
+      this.emojis[index] = e;
+      index = index + 1;
+    }
     this.selectedItem = navParams.get('image');
     this.images = [];
-    for (let i = 0; i<=10; i=i+2) {
-              this.images.push([{
-                title: i,
-                src: 'http://placehold.it/50x50'
-              },
-              {
-                title: i+1,
-                src: 'http://placehold.it/50x50'
-              }]);
+
+    var emoji_count = this.emojis.length;
+    for (var i = 0; i<=5; i=i+1) {
+      this.images.push([{
+        title: this.emojis[i].title,
+        src: this.emojis[i].src
+      },
+      {
+        title: this.emojis[i+1].title,
+        src: this.emojis[i+1].src
+      }]);
     }
+    console.log(this.images);
 
   }
 
@@ -47,7 +61,8 @@ export class HelloIonicPage {
     this.slider.slideNext()
   }
 
-  openSubmit() {
-
+  presentModal() {
+    let modal = this.modalCtrl.create(SubmitPage);
+    modal.present();
+    }
   }
-}

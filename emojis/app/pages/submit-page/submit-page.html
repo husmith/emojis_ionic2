@@ -1,0 +1,36 @@
+
+  <ion-navbar *navbar>
+    <button (click)="dismiss()">
+      Cancel
+    </button>
+    <ion-title>Submit Yours</ion-title>
+  </ion-navbar>
+
+<ion-content padding>
+<form [ngFormModel]="submitForm" (ngSubmit)="onSubmit(submitForm.value)">
+  <ion-item height-40>
+<ion-label>
+<div box>
+</div>
+<ion-input type="image" value="" [ngFormControl]="emojiImage"></ion-input>
+</ion-label>
+  </ion-item>
+
+  <!-- <ion-item [class.error]="!username.valid && username.touched"> -->
+  <ion-item>
+        <ion-label>Emoji Name</ion-label>
+        <ion-input type="text" value="" [ngFormControl]="emojiName"></ion-input>
+
+    </ion-item>
+    <!-- <ion-item [class.error]="!password.valid && password.touched"> -->
+    <ion-item>
+        <ion-label floating>Creator Name</ion-label>
+        <ion-input type="text" value="" [ngFormControl]="creatorName" ></ion-input>
+
+    </ion-item>
+    <div *ngIf="emojiName.hasError('required') && emojiName.touched" class="error-box">* Emoji Name is required.</div>
+    <div *ngIf="creatorName.hasError('required') && creatorName.touched" class="error-box">* Creator Name is required.</div>
+    <br/><br/>
+    <button type="submit" class="custom-button" [disabled]="!submitForm.valid" block>Submit</button>
+</form>
+</ion-content>
