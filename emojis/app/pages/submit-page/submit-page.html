@@ -1,31 +1,47 @@
 
-  <ion-navbar *navbar>
-    <button (click)="dismiss()">
-      Cancel
+<ion-header>
+  <ion-navbar>
+    <button clear (click)="dismiss()" start>
+      <ion-icon name="close"></ion-icon>
     </button>
-    <ion-title>Submit Yours</ion-title>
+    <ion-title style="text-align:center;">Submit Yours</ion-title>
   </ion-navbar>
+</ion-header>
 
 <ion-content padding>
-<form [ngFormModel]="submitForm" (ngSubmit)="onSubmit(submitForm.value)">
-  <ion-item height-40>
-<ion-label>
-<div box>
-</div>
-<ion-input type="image" value="" [ngFormControl]="emojiImage"></ion-input>
-</ion-label>
-  </ion-item>
+<form [formGroup]="submitForm" (ngSubmit)="onSubmit(submitForm.value)">
+  <ion-card height-25>
+<ion-input value="" formControlName="emojiImage">
+    <!-- <img [src]="base64Image" *ngIf="base64Image" /> -->
+    <img src="http://www.indre-reisid.ee/wp-content/themes/envision/lib/images/default-placeholder.png" *ngIf="!base64Image" />
+</ion-input>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col width-50>
+      <button clear (click)="takePicture()">
+        <ion-icon center name="cloud-upload"></ion-icon>
+      </button>
+    </ion-col>
+    <ion-col width-50>
+      <button clear>
+        <ion-icon name="camera"></ion-icon>
+      </button>
+    </ion-col>
+    </ion-row>
+  </ion-grid>
+    </ion-card-content>
+  </ion-card>
 
   <!-- <ion-item [class.error]="!username.valid && username.touched"> -->
   <ion-item>
-        <ion-label>Emoji Name</ion-label>
-        <ion-input type="text" value="" [ngFormControl]="emojiName"></ion-input>
-
+        <ion-label floating>Emoji Name</ion-label>
+        <ion-input type="text" value="" formControlName="emojiName"></ion-input>
     </ion-item>
     <!-- <ion-item [class.error]="!password.valid && password.touched"> -->
     <ion-item>
         <ion-label floating>Creator Name</ion-label>
-        <ion-input type="text" value="" [ngFormControl]="creatorName" ></ion-input>
+        <ion-input type="text" value="" formControlName="creatorName" ></ion-input>
 
     </ion-item>
     <div *ngIf="emojiName.hasError('required') && emojiName.touched" class="error-box">* Emoji Name is required.</div>

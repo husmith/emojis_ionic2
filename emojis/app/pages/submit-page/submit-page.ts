@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, Page, ViewController } from 'ionic-angular';
-import {FORM_DIRECTIVES, FormBuilder,  ControlGroup, Validators, AbstractControl} from '@angular/common';
+import { Validators} from '@angular/common';
+import {FORM_DIRECTIVES, FormBuilder,  FormGroup, AbstractControl} from '@angular/forms';
+import {Camera} from 'ionic-native';
 /*
   Generated class for the SubmitPagePage page.
 
@@ -12,23 +14,25 @@ import {FORM_DIRECTIVES, FormBuilder,  ControlGroup, Validators, AbstractControl
   directives: [FORM_DIRECTIVES]
 })
 export class SubmitPage {
-
-  submitForm: ControlGroup;
+  public base64Image: string;
+  submitForm: FormGroup;
   emojiImage: AbstractControl;
   creatorName: AbstractControl;
   emojiName: AbstractControl;
 
   static get parameters() {
-    return [ViewController]
+    return [ViewController, FormBuilder];
   }
 
   constructor(private viewCtrl: ViewController, fb: FormBuilder) {
+    if (fb) {
+      this.submitForm = fb.group({
+      'emojiName':['',Validators.compose([Validators.required, Validators.minLength(1)])],
+      'creatorName':['', Validators.compose([Validators.required, Validators.minLength(1)])],
+      'emojiImage': ['',Validators.compose([Validators.required])]
+      });
 
-    this.submitForm = fb.group({
-    'emojiName':['',Validators.compose([Validators.required, Validators.minLength(1)])],
-    'creatorName':['', Validators.compose([Validators.required, Validators.minLength(1)])],
-    'emojiImage': ['',Validators.compose([Validators.required])]
-    });
+    }
 
     this.emojiName = this.submitForm.controls['emojiName'];
     this.emojiImage = this.submitForm.controls['emojiImage'];
@@ -45,4 +49,16 @@ export class SubmitPage {
     }
   }
 
+  takePicture(){
+      Camera.getPicture({
+          destinationType: Camera.DestinationType.DATA_URL,
+          targetWidth: 1000,
+          targetHeight: 1000
+      }).then((imageData) => {
+        // imageData is a base64 encoded string
+          this.base64Image = "data:image/jpeg;base64," + imageData;
+      }, (err) => {
+          console.log(err);
+      });
+    }
 }
