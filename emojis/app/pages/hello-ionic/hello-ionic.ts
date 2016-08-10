@@ -4,14 +4,16 @@ import {EmojiDetailsPage} from '../emojis/emojis';
 import { SubmitPage } from '../submit-page/submit-page';
 import {emojiData} from '../../populate';
 import {Emoji} from '../../models/emoji';
+import {EmojiData} from '../../providers/emoji-data/emoji-data';
 
 @Component({
-  templateUrl: 'build/pages/hello-ionic/hello-ionic.html',
+  templateUrl: 'build/pages/hello-ionic/hello-ionic.html'
 })
 export class HelloIonicPage {
   selectedItem: any;
   images: Array<[{title: string, src: string}]>;
-  emojis: Array<Emoji>;
+  emojis = [];
+
   @ViewChild('mainSlider') slider: Slides;
 
   slideOptions = {
@@ -19,37 +21,43 @@ export class HelloIonicPage {
     direction: 'vertical'
   };
 
-  constructor(public navCtrl: NavController, navParams: NavParams, public modalCtrl: ModalController) {
+  constructor (public navCtrl: NavController, private navParams: NavParams, public modalCtrl: ModalController, emojiData: EmojiData) {
+    emojiData.getEmojis().then(emojis => {
+      this.emojis = emojis;
+    });
+    // console.log('hello',this.emojiData);
+
     // If we navigated to this page, we will have an item available as a nav param
-    this.emojis = [];
+
     let index = 0;
-    for (let img of emojiData) {
-      let e = new Emoji(img.title, img.src, img.category, img.detail_desc, img.short_desc);
-      this.emojis[index] = e;
-      index = index + 1;
-    }
-    this.selectedItem = navParams.get('image');
-    this.images = [];
-
-    var emoji_count = this.emojis.length;
-    for (var i = 0; i<=5; i=i+1) {
-      this.images.push([{
-        title: this.emojis[i].title,
-        src: this.emojis[i].src
-      },
-      {
-        title: this.emojis[i+1].title,
-        src: this.emojis[i+1].src
-      }]);
-    }
-    console.log(this.images);
-
-  }
-
-  imageTapped(event, image) {
-    console.log('image data:', image);
+    // for (let img of emojiData) {
+    //   let e = new Emoji(img.title, img.src, img.category, img.detail_desc, img.short_desc);
+    //   this.emojis[index] = e;
+    //   index = index + 1;
+    // }
+    // this.selectedItem = navParams.get('image');
+    // this.images = [];
+    //
+    // var emoji_count = this.emojis.length;
+    // for (var i = 0; i<=5; i=i+1) {
+    //   this.images.push([{
+    //     title: this.emojis[i].title,
+    //     src: this.emojis[i].src
+    //   },
+    //   {
+    //     title: this.emojis[i+1].title,
+    //     src: this.emojis[i+1].src
+    //   }]);
+    // }
+    // console.log(this.images);
+}
+goToEmojiDetail(emoji) {
+  this.navCtrl.push(EmojiDetailsPage, emoji);
+}
+  imageTapped(event, emoji) {
+    console.log('emoji data:', emoji);
     this.navCtrl.push(EmojiDetailsPage, {
-      image: image
+      emoji: emoji
     });
   }
   onSlideChanged() {

@@ -71,7 +71,7 @@ gulp.task('images', copyImages);
 gulp.task('html', copyHTML);
 gulp.task('fonts', copyFonts);
 gulp.task('images', function() {
-  return copyImages({ dest: 'www/img'});
+  return copyImages({ dest: 'www/build/images'});
 });
 gulp.task('scripts', copyScripts);
 gulp.task('clean', function(){

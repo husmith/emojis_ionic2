@@ -5,7 +5,7 @@
 // Makes Ionic Sass functions available to your App
 
 @import "globals.core";
-
+@import url(https://fonts.googleapis.com/css?family=Ubuntu:400,300italic,300,400italic,500,500italic,700,700bold);
 // App Shared Variables
 // --------------------------------------------------
 // To customize the look and feel of this app, you can override
@@ -26,10 +26,20 @@
 // are different per mode.
 
 $colors: (
-  primary:    #387ef5,
+  primary:    #FFD86F,
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,
   dark:       #222,
-  favorite:   #69BB7B
+  favorite:   #69BB7B,
+  light-yellow: #FFD86F,
+  dark-yellow:  #E8AA22,
+  light-black: #A09F9F,
+  dark-black:   #282828,
 );
+
+// $font-family-base
+$h2-font-size: (2.5rem);
+$font-family-base: (
+  font-family: 'Ubuntu', san-serif;
+  );

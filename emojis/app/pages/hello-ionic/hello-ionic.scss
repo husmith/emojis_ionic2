@@ -1,11 +1,44 @@
-.slide-footer {
-  bottom: 0;
-  position: fixed;
+
+body {
+
 }
 
-
-  p {
-    margin: 20px 0;
-    line-height: 22px;
-    font-size: 16px;
+.slide-footer {
+bottom: 0;
+position: fixed;
+width: 100%;
+  button {
+    color: #8a8a8a;
+    width: 100%;
   }
+}
+
+p {
+  margin: 20px 0;
+  line-height: 22px;
+  font-size: 16px;
+}
+
+ion-slide {
+  h2 {
+      font-family: 'Ubuntu-Medium', sans-serif;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+  }
+  p {
+    font-family: 'Ubuntu', sans-serif;
+    color: #7b7b7b;
+    text-align: center;
+    padding: 3em;
+    line-height: 3.2rem;
+    letter-spacing: 1px;
+  }
+}
+
+div#background-box {
+  padding-top: 10px;
+  padding-bottom: 5px;
+  background-color: #d1d1d1;
+  font-color: #A09F9F;
+}

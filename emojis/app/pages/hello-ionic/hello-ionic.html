@@ -1,9 +1,9 @@
-<ion-header>
-  <ion-navbar>
-    <button menuToggle>
+<ion-header no-shadow>
+  <ion-navbar no-shadow>
+    <button menuToggle start>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>PDX//moji</ion-title>
+    <ion-title text-center>PDX//moji</ion-title>
   </ion-navbar>
 </ion-header>
 <ion-slides #mainSlider (ionDidChange)="onSlideChanged()" [options]="slideOptions">
@@ -23,7 +23,7 @@
       the keyboard and what not.
     </p>
     <div class="slide-footer" styles="align: center;">
-      <button fab-bottom (click)="clickNextSlide()"><ion-icon name="arrow-down"></ion-icon></button>
+      <button clear id="footer-button" (click)="clickNextSlide()"><ion-icon name="arrow-down" light-black></ion-icon></button>
     </div>
 
   </ion-slide>
@@ -31,10 +31,16 @@
   <!-------- Slide 2 ---------->
   <ion-slide>
     <ion-grid>
-      <div class="gallery" *ngFor="let imgSet of images">
-        <ion-row>
+      <div class="gallery" >
+        <ion-row class="row" responsive-sm wrap *ngFor="let emoji of emojis" >
           <ion-col width-50>
-            <button clear full (click)="imageTapped($event, imgSet[0])">
+            <button clear full (click)="imageTapped($event, image)">
+            <img [src]="emoji.src" width="100%"/>
+            <!-- <p>{{emoji.title}}</p> -->
+          </button>
+          </ion-col>
+          <!-- <ion-col width-50>
+            <button clear (click)="imageTapped($event, imgSet[1])">
             <img src="{{imgSet[0].src}}" width="100%"/>
             <p>{{ imgSet[0].title }}</p>
           </button>
@@ -44,7 +50,7 @@
             <img src="{{imgSet[1].src}}" width="100%"/>
             <p>{{ imgSet[1].title }}</p>
           </button>
-          </ion-col>
+        </ion-col>-->
         </ion-row>
       </div>
     </ion-grid>
@@ -65,28 +71,26 @@
     <p>Portland is nothing without the people that make it up. We want your ideas and input as PDXmoji’s continue to grow. </p>
     <!-- <p>Upload anything from a sketch on a napkin to a perfect render of your emoji and you may see it in  the next release.</p> -->
     <div class="page-footer">
-          <button (click)="presentModal()">Submit Yours</button>
+          <button no-shadow outline round (click)="presentModal()">Submit Yours</button>
         </div>
       </ion-slide>
 
       <!-------- Slide 4 ---------->
 <ion-slide>
+<div id="background-box">
 <h2>About Us</h2>
-<p>Just a few lines detailing the purpose
+<p style="padding-top: 1px;">Just a few lines detailing the purpose
     of the app, the experience, and the
      ability for community involvement with
     the keyboard and what not.</p>
-    <p>
-      Just a few lines detailing the purpose
-    of the app, the experience, and the
-     ability for community involvement with
-    the keyboard and what not.
-    </p>
+
+  </div>
+    <h2 class="download-text">SOME SORT OF APPEALING LINE TO ENTISE USER DOWNLOADING</h2>
 </ion-slide>
 
 <!-------- Slide 5 ---------->
 <ion-slide>
-  <h2 class="download-text">SOME SORT OF APPEALING LINE TO ENTISE USER DOWNLOADING</h2>
+
   <p>
 <ion-icon name="facebook"></ion-icon>
 <ion-icon name="twitter"></ion-icon>

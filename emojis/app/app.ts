@@ -4,9 +4,11 @@ import {StatusBar} from 'ionic-native';
 import {HelloIonicPage} from './pages/hello-ionic/hello-ionic';
 import {ListPage} from './pages/list/list';
 import {GalleryPage} from './pages/gallery/gallery';
+import {EmojiData} from './providers/emoji-data/emoji-data';
 
 @Component({
-  templateUrl: 'build/app.html'
+  templateUrl: 'build/app.html',
+  providers:[EmojiData]
 })
 class MyApp {
   @ViewChild(Nav) nav: Nav;
@@ -17,9 +19,12 @@ class MyApp {
 
   constructor(
     public platform: Platform,
-    public menu: MenuController
+    public menu: MenuController,
+    private emojiData: EmojiData
   ) {
-    this.initializeApp();
+    emojiData.load();
+    console.log('app:', emojiData);
+
 
     // set our app's pages
     this.pages = [
@@ -27,13 +32,14 @@ class MyApp {
       { title: 'My First List', component: ListPage },
       { title: 'Gallery', component: GalleryPage }
     ];
-  }
 
-  initializeApp() {
-    this.platform.ready().then(() => {
+    platform.ready().then(() => {
+
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       StatusBar.styleDefault();
+      emojiData.load();
+
     });
   }
 

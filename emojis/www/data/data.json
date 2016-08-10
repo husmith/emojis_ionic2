@@ -1,0 +1,46 @@
+{
+  "emojis":[
+{
+  "title": "Beer Cheers",
+  "src":"img/emojis/beer_cheers_001.png",
+  "category": "beer",
+  "detail_desc": "desc 1",
+  "short_desc": "short desc"
+},
+{
+  "title": "Widmer Beer",
+  "src":"img/emojis/beer_widmer_001.png",
+  "category": "beer",
+  "detail_desc": "desc 2",
+  "short_desc": "short desc 2"
+},
+{
+  "title": "Beer Pint" ,
+  "src": "img/emojis/beer_pint_001.png",
+  "category": "beer" ,
+  "detail_desc": "",
+  "short_desc": "",
+  "location": ""},
+  {
+    "title": "Lit" ,
+    "src": "img/emojis/classics_lit.png",
+    "category": "classic",
+    "detail_desc": "",
+    "short_desc": "",
+    "location": ""},
+    {
+      "title": "Stoner Shit" ,
+      "src": "img/emojis/classics_poop.png",
+      "category": "classic",
+      "detail_desc":"" ,
+      "short_desc": "",
+      "location":"" },
+      {
+        "title": "PDX Carpet" ,
+        "src": "img/emojis/pdx_carpet_001.png",
+        "category": "iconic",
+        "detail_desc": "",
+        "short_desc":"" ,
+        "location":"" }
+]
+}
