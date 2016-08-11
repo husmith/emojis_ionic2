@@ -12,6 +12,7 @@ import {EmojiData} from '../../providers/emoji-data/emoji-data';
 export class HelloIonicPage {
   selectedItem: any;
   images: Array<[{title: string, src: string}]>;
+  rows: Array<number>;
   emojis = [];
 
   @ViewChild('mainSlider') slider: Slides;
@@ -25,6 +26,8 @@ export class HelloIonicPage {
     emojiData.getEmojis().then(emojis => {
       this.emojis = emojis;
     });
+    this.rows = Array.from(Array(Math.ceil(this.emojis.length/2)).keys());
+    console.log("rows:",this.rows);
     // console.log('hello',this.emojiData);
 
     // If we navigated to this page, we will have an item available as a nav param
@@ -54,7 +57,7 @@ export class HelloIonicPage {
 goToEmojiDetail(emoji) {
   this.navCtrl.push(EmojiDetailsPage, emoji);
 }
-  imageTapped(event, emoji) {
+  emojiTapped(event, emoji) {
     console.log('emoji data:', emoji);
     this.navCtrl.push(EmojiDetailsPage, {
       emoji: emoji

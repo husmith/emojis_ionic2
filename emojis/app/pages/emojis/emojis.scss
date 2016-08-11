@@ -1,3 +1,41 @@
 .emojis {
+  ion-card {
+    position: relative;
+    width: 50%;
+    background-color: #f5f5f5;
+  }
 
+  .card-share {
+    top: 50%;
+  }
+
+#center-img {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  text-align: center;
+
+  img {
+    height: 50%;
+    width: auto;
+    vertical-align: bottom;
+  }
+}
+  ion-card-content {
+    text-align: center;
+  }
+
+  .emoji-details {
+    font-family: 'Ubuntu-Medium', sans-serif;
+    letter-spacing: 1px;
+
+    h2 {
+    }
+
+    h4 {
+        color: font-family:Ubuntu-Medium;
+        color:#989898;
+
+    }
+  }
 }

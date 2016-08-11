@@ -8,12 +8,46 @@
 </ion-header>
 
 <ion-content>
- <div *ngIf="selectedItem" class="selection">
-    <b>{{selectedItem.title}}</b>
-    <img src="{{selectedItem.src}}"/>
+  <div style="height: 100%">
+<ion-card *ngIf="selectedEmoji" class="selection" style="background-color: #f5f5f5;" no-padding>
+<div id="center-img">
+   <img src="{{selectedEmoji.src}}" style="width:50%; margin-left: 25%;"/>
+   <button (click)="shareEmoji($event, selectedEmoji)" clear>
+      <ion-icon name="share-alt"></ion-icon>
+</button>
+</div>
+</ion-card>
+<div class="emoji-details" padding>
+<h2 text-center text-uppercase>{{selectedEmoji.title}}</h2>
+<h4 light-black text-center text-uppercase>{{selectedEmoji.category}}</h4>
+<p text-center>{{selectedEmoji.detail_desc}}</p>
+</div>
+</div>
+<ion-row *ngIf="selectedEmoji.location">
+<ion-col width-100>
 
-    <div>
-      You navigated here from <b>{{selectedItem.title}}</b>
-    </div>
-  </div>
+</ion-col>
+</ion-row>
+
+
+<div class="emoji-pics" *ngIf="selectedEmoji.pic">
+<img src="{{selectedEmoji.pic}}"/>
+</div>
+<div padding class="refresh">
+<h2 uppercase text-center>Refresh It</h2>
+  <p text-center>
+    Portland is always changing - what works
+today doesn’t work tomorrow.  Think the
+emoji doesn’t match the definition?  Why
+not refresh it with what you think will
+properly represent it.
+  </p>
+  <ion-row>
+    <ion-col text-center>
+<button round outline red-accent>
+  REFRESH IT
+</button>
+</ion-col>
+</ion-row>
+</div>
 </ion-content>

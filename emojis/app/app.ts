@@ -4,6 +4,7 @@ import {StatusBar} from 'ionic-native';
 import {HelloIonicPage} from './pages/hello-ionic/hello-ionic';
 import {ListPage} from './pages/list/list';
 import {GalleryPage} from './pages/gallery/gallery';
+import {SubmitPage} from './pages/submit-page/submit-page';
 import {EmojiData} from './providers/emoji-data/emoji-data';
 
 @Component({
@@ -28,9 +29,10 @@ class MyApp {
 
     // set our app's pages
     this.pages = [
-      { title: 'Hello Ionic', component: HelloIonicPage },
-      { title: 'My First List', component: ListPage },
-      { title: 'Gallery', component: GalleryPage }
+      { title: 'Home', component: HelloIonicPage },
+      { title: 'About', component: HelloIonicPage },
+      { title: 'Dictionary', component: HelloIonicPage},
+      { title: 'Add Yours', component: SubmitPage }
     ];
 
     platform.ready().then(() => {

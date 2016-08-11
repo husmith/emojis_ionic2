@@ -30,15 +30,18 @@
 
   <!-------- Slide 2 ---------->
   <ion-slide>
-    <ion-grid>
-      <div class="gallery" >
-        <ion-row class="row" responsive-sm wrap *ngFor="let emoji of emojis" >
+
+<!-- <ion-row wrap *ngFor="let emoji of emojis"> -->
+<div *ngFor="let emoji of emojis">
+    <ion-row *ngIf="emoji.index%2==0">
           <ion-col width-50>
-            <button clear full (click)="imageTapped($event, image)">
+            <button clear full (click)="emojiTapped($event, emoji)">
             <img [src]="emoji.src" width="100%"/>
             <!-- <p>{{emoji.title}}</p> -->
           </button>
-          </ion-col>
+            </ion-col>
+        </ion-row>
+
           <!-- <ion-col width-50>
             <button clear (click)="imageTapped($event, imgSet[1])">
             <img src="{{imgSet[0].src}}" width="100%"/>
@@ -51,9 +54,7 @@
             <p>{{ imgSet[1].title }}</p>
           </button>
         </ion-col>-->
-        </ion-row>
       </div>
-    </ion-grid>
 
   </ion-slide>
 
@@ -77,9 +78,9 @@
 
       <!-------- Slide 4 ---------->
 <ion-slide>
-<div id="background-box">
+<div light-black id="background-box">
 <h2>About Us</h2>
-<p style="padding-top: 1px;">Just a few lines detailing the purpose
+<p padding-top>Just a few lines detailing the purpose
     of the app, the experience, and the
      ability for community involvement with
     the keyboard and what not.</p>
@@ -91,13 +92,13 @@
 <!-------- Slide 5 ---------->
 <ion-slide>
 
-  <p>
-<ion-icon name="facebook"></ion-icon>
-<ion-icon name="twitter"></ion-icon>
-<ion-icon name="instagram"></ion-icon>
-<ion-icon name="snapchat"></ion-icon>
-  </p>
-  <ion-content></ion-content>
+  <ion-row>
+<ion-col><ion-icon black name="facebook"></ion-icon></ion-col>
+<ion-col><ion-icon black name="twitter"></ion-icon></ion-col>
+<ion-col><ion-icon black name="instagram"></ion-icon></ion-col>
+<ion-col><ion-icon black name="snapchat"></ion-icon></ion-col>
+  </ion-row>
+
   <ion-footer>
   <ion-toolbar>
     <ion-title>Made with < 3 in PDX. in PDX.  An R/GA Product</ion-title>

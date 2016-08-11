@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavParams, NavController } from 'ionic-angular';
-
+import { SocialSharing } from 'ionic-native';
 /*
   Generated class for the EmojisPage page.
 
@@ -11,9 +11,22 @@ import { NavParams, NavController } from 'ionic-angular';
   templateUrl: 'build/pages/emojis/emojis.html',
 })
 export class EmojiDetailsPage {
-  selectedItem: any;
+  selectedEmoji: any;
   constructor(private navCtrl: NavController, navParams: NavParams) {
-    this.selectedItem = navParams.get('image');
+    this.selectedEmoji = navParams.get('emoji');
+  }
+
+  shareEmoji(event, emoji) {
+    var message = emoji.title;
+    var img = emoji.src;
+    var url = "#";
+
+      SocialSharing.shareViaTwitter(message, img, url);
+
+      SocialSharing.shareViaFacebook(message, img, url);
+
+      SocialSharing.shareViaInstagram(message, img);
+
   }
 
 }
